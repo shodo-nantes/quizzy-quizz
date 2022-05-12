@@ -1,4 +1,4 @@
-package io.shodo.quizzyquizz;
+package io.shodo.quizzyquizz.domain;
 
 public class CreateGame {
     QuestionsProvider questionsProvider;

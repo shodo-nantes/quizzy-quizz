@@ -1,4 +1,4 @@
-package io.shodo.quizzyquizz;
+package io.shodo.quizzyquizz.domain;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +10,7 @@ class CreateGameTest {
 
     @Test
     void when_a_new_game_is_created_a_question_should_be_returned() {
-        assertThat(createGame.random().question()).isEqualTo(Question.LIST_ACTOR_MOVIE);
+        assertThat(createGame.random().question()).isEqualTo(Question.LIST_CHARLIZE_THERON_MOVIES);
     }
 
 }

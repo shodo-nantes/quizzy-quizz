@@ -13,4 +13,16 @@ class CreateGameTest {
         assertThat(createGame.random().question()).isEqualTo(Question.LIST_CHARLIZE_THERON_MOVIES);
     }
 
+    @Test
+    void when_giving_a_good_answer_to_a_question_the_game_indicate_its_a_correct_answer() {
+        AnswerGame answerGame = new AnswerGame(createGame.random(), "Bombshell");
+        assertThat(answerGame.validate()).isTrue();
+    }
+
+    @Test
+    void when_giving_a_false_answer_to_a_question_the_game_indicate_its_a_correct_answer() {
+        AnswerGame answerGame = new AnswerGame(createGame.random(), "Astérix et Obélix : Mission Cléopâtre");
+        assertThat(answerGame.validate()).isFalse();
+    }
+
 }

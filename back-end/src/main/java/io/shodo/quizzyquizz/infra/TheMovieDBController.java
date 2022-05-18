@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("")
 
-public class AgifyController {
-    private final AgifyService agifyService;
+public class TheMovieDBController {
+    private final TheMovieDBService theMovieDBService;
 
     @Autowired
-    public AgifyController(AgifyService agifyService) {
-        this.agifyService = agifyService;
+    public TheMovieDBController(TheMovieDBService theMovieDBService) {
+        this.theMovieDBService = theMovieDBService;
     }
 
     @GetMapping
-    public String getName() { return agifyService.printAge(); }
+    public String getMovieCredits() { return theMovieDBService.printMovieCredits(); }
 
 }

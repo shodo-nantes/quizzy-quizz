@@ -6,7 +6,7 @@ public class CreateGame {
         this.questionsProvider = questionsProvider;
     }
 
-    Game random() {
+    public Game random() {
         return new Game(questionsProvider.getRandomQuestion());
     }
 }

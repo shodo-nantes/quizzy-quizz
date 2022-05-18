@@ -9,8 +9,8 @@ public class RandomQuestionsProvider implements QuestionsProvider {
 
     private final Random random;
 
-    public RandomQuestionsProvider(Random random1) {
-        random = random1;
+    public RandomQuestionsProvider(Random random) {
+        this.random = random;
     }
 
     @Override

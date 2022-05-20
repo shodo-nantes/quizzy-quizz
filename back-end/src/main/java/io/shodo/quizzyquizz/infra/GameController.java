@@ -20,6 +20,15 @@ public class GameController {
 
     }
 
-    @GetMapping
-    public Game createRandomGame() {return createGameService.createRandomGame();}
+    @PostMapping("/random")
+    public Game createRandomGame() {
+        return new CreateGame(randomQuestionsProvider).random();
+    }
+
+    @GetMapping("/{id}")
+    public Game getGame(@PathVariable String id) {
+        UUID uuid = UUID.fromString(id);
+        return Games.getInstance().getGame(uuid);
+
+    }
 }

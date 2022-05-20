@@ -1,5 +1,6 @@
 package io.shodo.quizzyquizz.infra;
 
+import com.jayway.jsonpath.JsonPath;
 import io.shodo.quizzyquizz.domain.CreateGame;
 import io.shodo.quizzyquizz.domain.Game;
 import io.shodo.quizzyquizz.domain.QuestionsProvider;
@@ -8,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -25,8 +28,20 @@ public class GameControllerTest {
 
     @Test
     void create_a_random_game_should_returns_a_200() throws Exception {
-        this.mockMvc.perform(post("/games/random")).andExpect(status().isOk())
+        this.mockMvc.perform(post("/games/random"))
+                .andExpect(status().isOk())
                 .andExpect(jsonPath("question").isNotEmpty());
+    }
+
+    @Test
+    void get_a_created_game_returns_the_corresponding_game() throws Exception {
+        MvcResult mvcResult = this.mockMvc.perform(post("/games/random")).andReturn();
+
+        String id = JsonPath.read(mvcResult.getResponse().getContentAsString(), "$.id");
+        this.mockMvc.perform(get("/games/" + id))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("id").isNotEmpty())
+                .andExpect(jsonPath("id").value(id));
     }
 
     @Test

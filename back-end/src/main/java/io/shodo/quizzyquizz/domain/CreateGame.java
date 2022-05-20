@@ -7,6 +7,8 @@ public class CreateGame {
     }
 
     public Game random() {
-        return new Game(questionsProvider.getRandomQuestion());
+        Game newGame = new Game(questionsProvider.getRandomQuestion());
+        Games.getInstance().addNewGame(newGame);
+        return newGame;
     }
 }

@@ -12,11 +12,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @SpringBootTest
 @AutoConfigureMockMvc
 public class QuestionControllerTest {
-    //    @Test //TODO create a question test and mock the call?
-//    void when_creating_a_new_question_answers_list_is_not_empty(){
-//        List<String> answers = new Question("label", "type").answers();
-//        assertThat(answers).isNotEmpty();
-//    }
+
     @Autowired
     private MockMvc mockMvc;
 
@@ -29,4 +25,10 @@ public class QuestionControllerTest {
                 )
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
+
+//    @Test //TODO create a question test and mock the call?
+//    void when_creating_a_new_question_answers_list_is_not_empty(){
+//        List<String> answers = Question("label", "type").answers();
+//        assertThat(answers).isNotEmpty();
+//    }
 }

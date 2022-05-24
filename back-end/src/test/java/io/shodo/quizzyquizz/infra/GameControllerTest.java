@@ -35,9 +35,9 @@ public class GameControllerTest {
 
     @Test
     void get_a_created_game_returns_the_corresponding_game() throws Exception {
-        MvcResult mvcResult = this.mockMvc.perform(post("/games/random")).andReturn();
+        MvcResult randomGame = this.mockMvc.perform(post("/games/random")).andReturn();
 
-        String id = JsonPath.read(mvcResult.getResponse().getContentAsString(), "$.id");
+        String id = JsonPath.read(randomGame.getResponse().getContentAsString(), "$.id");
         this.mockMvc.perform(get("/games/" + id))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("id").isNotEmpty())

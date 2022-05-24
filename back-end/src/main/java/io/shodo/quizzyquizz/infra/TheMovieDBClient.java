@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(value = "themoviedb", url = "https://api.themoviedb.org/3/")
 public interface TheMovieDBClient {
+    //TODO comment tester theMovieDBClient et les appels APIs
     @GetMapping(value = "/person/{personId}/movie_credits")
     MovieCredits getMovieCredits(@PathVariable("personId") Long personId, @RequestParam("api_key") String apiKey, @RequestParam("language") String language);
+
+    @GetMapping("/search/person")
+    ActorSearch getActor(@RequestParam("query") String actorName, @RequestParam("api_key") String apiKey, @RequestParam("language") String language);
 }

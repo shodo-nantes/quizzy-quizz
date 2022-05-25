@@ -16,7 +16,7 @@ class RandomQuestionsProviderTest {
     @Test
     void should_return_random_question() {
         var questions = List.of(randomQuestionsProvider.getRandomQuestion(), randomQuestionsProvider.getRandomQuestion());
-        assertThat(questions).containsExactly(Question.LIST_CHARLIZE_THERON_MOVIES, Question.LIST_THE_ROCK_MOVIES);
+         assertThat(questions).containsExactly(Questions.getInstance().getQuestions().get(0), Questions.getInstance().getQuestions().get(1));
     }
 
     //TODO ce test doit il être dans cette classe de test ou dans une classe de test spécifique à Question ? Les classes métiers doivent elles être testées directement?

@@ -1,9 +1,11 @@
 package io.shodo.quizzyquizz.domain;
 
+import io.shodo.quizzyquizz.infra.Questions;
+
 class FakeRandomQuestionsProvider implements QuestionsProvider {
 
     @Override
     public Question getRandomQuestion() {
-        return Question.LIST_CHARLIZE_THERON_MOVIES;
+        return Questions.getInstance().getQuestions().get(0);
     }
 }

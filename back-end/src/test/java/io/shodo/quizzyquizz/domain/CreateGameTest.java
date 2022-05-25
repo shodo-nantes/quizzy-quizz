@@ -1,5 +1,6 @@
 package io.shodo.quizzyquizz.domain;
 
+import io.shodo.quizzyquizz.infra.Questions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -10,7 +11,7 @@ class CreateGameTest {
 
     @Test
     void when_a_new_game_is_created_a_question_should_be_returned() {
-        assertThat(createGame.random().getQuestion()).isEqualTo(Question.LIST_CHARLIZE_THERON_MOVIES);
+        assertThat(createGame.random().getQuestion()).isEqualTo(Questions.getInstance().getQuestions().get(0));
     }
 
     @Test

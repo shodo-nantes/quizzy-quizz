@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 @Component
@@ -20,8 +21,9 @@ public class RandomQuestionsProvider implements QuestionsProvider {
 
     @Override
     public Question getRandomQuestion() {
-        int randomIndex = random.nextInt(Question.values().length);
-        return Question.values()[randomIndex];
+        ArrayList<Question> questions = Questions.getInstance().getQuestions();
+        int randomIndex = random.nextInt(questions.size());
+        return questions.get(randomIndex);
 
     }
 }

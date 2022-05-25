@@ -26,9 +26,5 @@ public class QuestionControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-//    @Test //TODO create a question test and mock the call?
-//    void when_creating_a_new_question_answers_list_is_not_empty(){
-//        List<String> answers = Question("label", "type").answers();
-//        assertThat(answers).isNotEmpty();
-//    }
+
 }

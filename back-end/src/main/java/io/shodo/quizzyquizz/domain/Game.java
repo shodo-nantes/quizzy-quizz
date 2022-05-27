@@ -6,16 +6,16 @@ import java.util.UUID;
 public final class Game {
     private final Question question;
     private final UUID id;
+    private final Answers answers;
 
-
-    //    private final UUID uuid;
-    public Game(Question question) {
+    public Game(Question question, Answers answers, UUID uuid) {
         this.question = question;
-        this.id = UUID.randomUUID(); //TODO question : on est d'accord sur le fait qu'on peut pas garder un record si on fait ça ?
+        this.id = uuid;
+        this.answers = answers;
     }
 
     public boolean answer(String answer) {
-        return this.getQuestion().answers().contains(answer);
+        return answers.contains(answer);
     }
 
     public Question getQuestion() {

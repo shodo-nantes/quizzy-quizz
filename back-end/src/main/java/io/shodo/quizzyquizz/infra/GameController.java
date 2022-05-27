@@ -1,5 +1,6 @@
 package io.shodo.quizzyquizz.infra;
 
+import io.shodo.quizzyquizz.domain.AnswersProvider;
 import io.shodo.quizzyquizz.domain.CreateGame;
 import io.shodo.quizzyquizz.domain.Game;
 import io.shodo.quizzyquizz.domain.Games;
@@ -13,16 +14,18 @@ import java.util.UUID;
 public class GameController {
 
     private final RandomQuestionsProvider randomQuestionsProvider;
+    private final AnswersProvider answersProvider;
 
     @Autowired
-    public GameController(RandomQuestionsProvider randomQuestionsProvider) {
+    public GameController(RandomQuestionsProvider randomQuestionsProvider, AnswersProvider answersProvider) {
         this.randomQuestionsProvider = randomQuestionsProvider;
 
+        this.answersProvider = answersProvider;
     }
 
     @PostMapping("/random")
     public Game createRandomGame() {
-        return new CreateGame(randomQuestionsProvider).random();
+        return new CreateGame(randomQuestionsProvider, answersProvider).random();
     }
 
     @GetMapping("/{id}")

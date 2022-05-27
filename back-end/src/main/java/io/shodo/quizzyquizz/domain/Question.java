@@ -1,20 +1,18 @@
 package io.shodo.quizzyquizz.domain;
 
-import java.util.List;
-
 public class Question {
 
     final String actor;
-    final List<String> answers;
+    //TODO liste des réponses dans le Game
     final QuestionType type;
     final String label;
 
-    public Question(String actor, List<String> answers, QuestionType type) {
+    public Question(String actor, QuestionType type) {
         this.actor = actor;
-        this.answers = answers;
         this.type = type;
         this.label = this.createLabel(actor, type);
     }
+
 
     private String createLabel(String actor, QuestionType type) {
         return switch (type) {
@@ -24,9 +22,6 @@ public class Question {
 
     }
 
-    public List<String> answers() {
-        return this.answers;
-    }
 
     public QuestionType getType() {
         return type;
@@ -41,7 +36,6 @@ public class Question {
     public String toString() {
         return "Question{" +
                 "actor='" + actor + '\'' +
-                ", answers=" + answers +
                 ", type=" + type +
                 ", answer='" + label + '\'' +
                 '}';

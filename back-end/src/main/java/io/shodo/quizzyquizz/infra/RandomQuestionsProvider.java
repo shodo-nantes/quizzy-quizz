@@ -24,7 +24,8 @@ public class RandomQuestionsProvider implements QuestionsProvider {
     public Question getRandomQuestion() {
         ArrayList<Question> questions = Questions.getInstance().getQuestions();
         int randomIndex = random.nextInt(questions.size());
-        return questions.get(randomIndex);
+        Question question = questions.get(randomIndex);
+        return question;
 
     }
 }

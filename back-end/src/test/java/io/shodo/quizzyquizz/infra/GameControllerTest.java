@@ -1,6 +1,7 @@
 package io.shodo.quizzyquizz.infra;
 
 import com.jayway.jsonpath.JsonPath;
+import io.shodo.quizzyquizz.domain.AnswersProvider;
 import io.shodo.quizzyquizz.domain.CreateGame;
 import io.shodo.quizzyquizz.domain.Game;
 import io.shodo.quizzyquizz.domain.QuestionsProvider;
@@ -25,6 +26,8 @@ public class GameControllerTest {
     private MockMvc mockMvc;
     @Autowired
     private QuestionsProvider questionProvider;
+    @Autowired
+    private AnswersProvider answersProvider;
 
     @Test
     void create_a_random_game_should_returns_a_200() throws Exception {
@@ -46,8 +49,8 @@ public class GameControllerTest {
 
     @Test
     void should_answering_a_good_answer_return_true() throws Exception {
-        Game game = new CreateGame(questionProvider).random();
-        String answer = game.getQuestion().answers().get(0);
+        Game game = new CreateGame(questionProvider, answersProvider).random();
+        String answer = "toto";
         String gameId = game.getId().toString();
         this.mockMvc.perform(post("/games/" + gameId + "/answer")
                         .contentType(APPLICATION_JSON)
@@ -63,7 +66,7 @@ public class GameControllerTest {
 
     @Test
     void should_answering_a_wrong_answer_return_false() throws Exception {
-        Game game = new CreateGame(questionProvider).random();
+        Game game = new CreateGame(questionProvider, answersProvider).random();
         String answer = "Intouchables";
         String gameId = game.getId().toString();
         this.mockMvc.perform(post("/games/" + gameId + "/answer")

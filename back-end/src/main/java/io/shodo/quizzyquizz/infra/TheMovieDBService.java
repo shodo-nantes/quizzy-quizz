@@ -25,4 +25,10 @@ public class TheMovieDBService {
         return theMovieDBClient.getActor(actorName, "4461da6b443fef45788c3c171a154582", "fr").results().get(0).id();
     }
 
+    //TODO remove the function from QuestionController and move the test to theMovieDBServiceTest
+    public List<Movie> getMovieTheActorPlayedIn(String actor) {
+        Long actorId = getActorId(actor);
+        return getMovieCredits(actorId);
+    }
+
 }

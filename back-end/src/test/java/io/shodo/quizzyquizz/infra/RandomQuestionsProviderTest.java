@@ -1,6 +1,7 @@
 package io.shodo.quizzyquizz.infra;
 
 import io.shodo.quizzyquizz.domain.Question;
+import io.shodo.quizzyquizz.domain.Questions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

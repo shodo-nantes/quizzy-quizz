@@ -1,6 +1,7 @@
 package io.shodo.quizzyquizz.infra;
 
 import io.shodo.quizzyquizz.domain.Question;
+import io.shodo.quizzyquizz.domain.Questions;
 import io.shodo.quizzyquizz.domain.QuestionsProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

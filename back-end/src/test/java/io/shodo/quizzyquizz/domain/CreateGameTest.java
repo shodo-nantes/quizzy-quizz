@@ -1,6 +1,5 @@
 package io.shodo.quizzyquizz.domain;
 
-import io.shodo.quizzyquizz.infra.Questions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

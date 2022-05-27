@@ -27,8 +27,13 @@ public class GameController {
 
     @GetMapping("/{id}")
     public Game getGame(@PathVariable String id) {
-        UUID uuid = UUID.fromString(id);
-        return Games.getInstance().getGame(uuid);
+        return Games.getInstance().getGame(UUID.fromString(id));
+    }
+
+    @PostMapping("/{id}/answer")
+    public QuestionResult answer(@PathVariable String id, @RequestBody Answer answer) {
+        Game game = Games.getInstance().getGame(UUID.fromString(id));
+        return new QuestionResult(game.answer(answer.answer()));
 
     }
 }

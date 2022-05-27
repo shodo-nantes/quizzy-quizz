@@ -14,7 +14,7 @@ public final class Game {
         this.id = UUID.randomUUID(); //TODO question : on est d'accord sur le fait qu'on peut pas garder un record si on fait ça ?
     }
 
-    boolean answer(String answer) {
+    public boolean answer(String answer) {
         return this.getQuestion().answers().contains(answer);
     }
 

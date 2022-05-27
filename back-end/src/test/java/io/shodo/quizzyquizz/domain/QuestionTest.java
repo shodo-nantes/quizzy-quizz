@@ -1,6 +1,5 @@
 package io.shodo.quizzyquizz.domain;
 
-import io.shodo.quizzyquizz.infra.Questions;
 import io.shodo.quizzyquizz.infra.TheMovieDBService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class QuestionTest {
 
 //    @Test //TODO create a question test and mock the call?
 //    void when_creating_a_new_question_with_type_MOVIES_THE_ACTOR_PLAYED_IN_theMovieDB_api_is_called(){
-////        List<String> answers = Question("label", "type").answers();
+////        List<String> answers = Question("answer", "type").answers();
 ////        assertThat(answers).isNotEmpty();
 //        List<Movie> movieList = List.of(new Movie("First Title", "First Original Title"), new Movie("Second Title", "Second Original Title"));
 //        when(theMovieDBServiceMock.getMovieCredits(any(Long.class))).thenReturn(movieList);

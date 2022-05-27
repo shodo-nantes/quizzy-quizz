@@ -1,6 +1,4 @@
-package io.shodo.quizzyquizz.infra;
-
-import io.shodo.quizzyquizz.domain.Question;
+package io.shodo.quizzyquizz.domain;
 
 import java.util.ArrayList;
 import java.util.List;

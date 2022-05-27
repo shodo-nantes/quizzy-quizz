@@ -3,22 +3,7 @@ package io.shodo.quizzyquizz.domain;
 import java.util.List;
 
 public class Question {
-    /*    LIST_CHARLIZE_THERON_MOVIES("Charlize Theron",
-                new ArrayList<>(
-                        List.of("Bombshell", "The Addams Family", "Atomic Blonde")
-                ),
-        ),
-        LIST_THE_ROCK_MOVIES("The Rock",
-                new ArrayList<>(
-                        List.of("Fast & Furious 6", "Furious 7", "Jumanji: Welcome to the Jungle")
-                ), MOVIES_THE_ACTOR_PLAYED_IN
-        ),
 
-        LIST_BRAD_PITT_ACTING_PARTNER("Brad Pitt",
-                new ArrayList<>(
-                        List.of("Leonardo DiCaprio", "Margot Robbie", "Helena Bonham Carter")
-                ), QuestionType.ACTORS_THE_ACTOR_PLAYED_WITH
-        );*/
     final String actor;
     final List<String> answers;
     final QuestionType type;
@@ -58,7 +43,7 @@ public class Question {
                 "actor='" + actor + '\'' +
                 ", answers=" + answers +
                 ", type=" + type +
-                ", label='" + label + '\'' +
+                ", answer='" + label + '\'' +
                 '}';
     }
 }

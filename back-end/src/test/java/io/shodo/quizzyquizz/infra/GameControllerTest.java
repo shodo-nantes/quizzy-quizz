@@ -45,14 +45,37 @@ public class GameControllerTest {
     }
 
     @Test
-    void toto() throws Exception {
-        Game randomGame = new CreateGame(questionProvider).random(); //TODO get id
-        this.mockMvc.perform(post("/games/1234/answer").contentType(APPLICATION_JSON)
-                        .content("""
-                                {"answer": "Les schtroumpfs"}
-                                """))
+    void should_answering_a_good_answer_return_true() throws Exception {
+        Game game = new CreateGame(questionProvider).random();
+        String answer = game.getQuestion().answers().get(0);
+        String gameId = game.getId().toString();
+        this.mockMvc.perform(post("/games/" + gameId + "/answer")
+                        .contentType(APPLICATION_JSON)
+                        .content(
+                                """
+                                        {"answer": "%s"}
+                                        """.formatted(answer)
+                        )
+                )
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("question").isNotEmpty());
+                .andExpect(jsonPath("result").value(true));
+    }
+
+    @Test
+    void should_answering_a_wrong_answer_return_false() throws Exception {
+        Game game = new CreateGame(questionProvider).random();
+        String answer = "Intouchables";
+        String gameId = game.getId().toString();
+        this.mockMvc.perform(post("/games/" + gameId + "/answer")
+                        .contentType(APPLICATION_JSON)
+                        .content(
+                                """
+                                        {"answer": "%s"}
+                                        """.formatted(answer)
+                        )
+                )
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("result").value(false));
     }
 
 

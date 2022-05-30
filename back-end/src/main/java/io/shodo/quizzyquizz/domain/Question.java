@@ -3,7 +3,6 @@ package io.shodo.quizzyquizz.domain;
 public class Question {
 
     final String actor;
-    //TODO liste des réponses dans le Game
     final QuestionType type;
     final String label;
 

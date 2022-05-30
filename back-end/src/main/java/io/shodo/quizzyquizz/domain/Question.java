@@ -15,11 +15,7 @@ public class Question {
 
 
     private String createLabel(String actor, QuestionType type) {
-        return switch (type) {
-            case MOVIES_THE_ACTOR_PLAYED_IN -> String.format("In which movie did %s play?", actor);
-            case ACTORS_THE_ACTOR_PLAYED_WITH -> String.format("With which actors did %s play?", actor);
-        };
-
+        return String.format(type.getLabel(), actor);
     }
 
 
@@ -27,9 +23,8 @@ public class Question {
         return type;
     }
 
-    public enum QuestionType {
-        MOVIES_THE_ACTOR_PLAYED_IN,
-        ACTORS_THE_ACTOR_PLAYED_WITH
+    public String getLabel() {
+        return label;
     }
 
     @Override
@@ -37,7 +32,22 @@ public class Question {
         return "Question{" +
                 "actor='" + actor + '\'' +
                 ", type=" + type +
-                ", answer='" + label + '\'' +
+                ", label='" + label + '\'' +
                 '}';
+    }
+
+    public enum QuestionType {
+        MOVIES_THE_ACTOR_PLAYED_IN("In which movie did %s play?"),
+        ACTORS_THE_ACTOR_PLAYED_WITH("With which actors did %s play?");
+
+        private final String label;
+
+        QuestionType(String label) {
+            this.label = label;
+        }
+
+        public String getLabel() {
+            return label;
+        }
     }
 }

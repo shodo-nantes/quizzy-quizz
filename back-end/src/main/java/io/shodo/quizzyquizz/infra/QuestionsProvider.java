@@ -2,7 +2,6 @@ package io.shodo.quizzyquizz.infra;
 
 import io.shodo.quizzyquizz.domain.Question;
 import io.shodo.quizzyquizz.domain.Questions;
-import io.shodo.quizzyquizz.domain.QuestionsProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -11,12 +10,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 @Component
-public class RandomQuestionsProvider implements QuestionsProvider {
+public class QuestionsProvider implements io.shodo.quizzyquizz.domain.QuestionsProvider {
 
     private final Random random;
 
     @Autowired
-    public RandomQuestionsProvider(@Value("#{new java.util.Random()}") Random random) {
+    public QuestionsProvider(@Value("#{new java.util.Random()}") Random random) {
         this.random = random;
     }
 
@@ -24,8 +23,12 @@ public class RandomQuestionsProvider implements QuestionsProvider {
     public Question getRandomQuestion() {
         ArrayList<Question> questions = Questions.getInstance().getQuestions();
         int randomIndex = random.nextInt(questions.size());
-        Question question = questions.get(randomIndex);
-        return question;
+        return questions.get(randomIndex);
 
+    }
+
+    @Override
+    public Question getQuestionFromActorAndType(String actor, Question.QuestionType questionType) {
+        return new Question(actor, questionType);
     }
 }

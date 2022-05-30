@@ -13,11 +13,11 @@ import java.util.UUID;
 @RequestMapping("/games")
 public class GameController {
 
-    private final RandomQuestionsProvider randomQuestionsProvider;
+    private final QuestionsProvider randomQuestionsProvider;
     private final AnswersProvider answersProvider;
 
     @Autowired
-    public GameController(RandomQuestionsProvider randomQuestionsProvider, AnswersProvider answersProvider) {
+    public GameController(QuestionsProvider randomQuestionsProvider, AnswersProvider answersProvider) {
         this.randomQuestionsProvider = randomQuestionsProvider;
 
         this.answersProvider = answersProvider;

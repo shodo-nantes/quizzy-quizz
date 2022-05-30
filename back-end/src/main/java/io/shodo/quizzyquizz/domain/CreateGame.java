@@ -1,5 +1,7 @@
 package io.shodo.quizzyquizz.domain;
 
+import io.shodo.quizzyquizz.domain.Question.QuestionType;
+
 import java.util.UUID;
 
 public class CreateGame {
@@ -13,11 +15,19 @@ public class CreateGame {
 
     public Game random() {
         Question randomQuestion = questionsProvider.getRandomQuestion();
-        Answers answers = answersProvider.getAnswersFor(randomQuestion);
-        Game newGame = new Game(randomQuestion, answers, UUID.randomUUID());
+        return fromQuestion(randomQuestion);
+    }
+
+    public Game fromActorAndQuestionType(String actor, QuestionType questionType) {
+        Question question = questionsProvider.getQuestionFromActorAndType(actor, questionType);
+        return fromQuestion(question);
+    }
+
+    private Game fromQuestion(Question question) {
+        Answers answers = answersProvider.getAnswersFor(question);
+        Game newGame = new Game(question, answers, UUID.randomUUID());
         Games.getInstance().addNewGame(newGame);
         return newGame;
     }
 
-    //TODO create game où on passe un actor et un type de question
 }

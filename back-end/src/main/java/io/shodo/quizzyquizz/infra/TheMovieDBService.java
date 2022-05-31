@@ -15,17 +15,15 @@ public class TheMovieDBService {
         this.theMovieDBClient = theMovieDBClient;
     }
 
-    //TODO test
-    public List<Movie> getMovieCredits(Long personId) {
+    List<Movie> getMovieCredits(Long personId) {
         return theMovieDBClient.getMovieCredits(personId, "4461da6b443fef45788c3c171a154582", "fr").cast();
     }
 
-    //TODO test
-    public Long getActorId(String actorName) {
+    Long getActorId(String actorName) {
         return theMovieDBClient.getActor(actorName, "4461da6b443fef45788c3c171a154582", "fr").results().get(0).id();
     }
 
-    public List<Movie> getMovieTheActorPlayedIn(String actor) {
+    List<Movie> getMovieTheActorPlayedIn(String actor) {
         Long actorId = getActorId(actor);
         return getMovieCredits(actorId);
     }

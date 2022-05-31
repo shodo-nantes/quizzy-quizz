@@ -26,6 +26,10 @@ public class Question {
         return label;
     }
 
+    public String getActor() {
+        return actor;
+    }
+
     @Override
     public String toString() {
         return "Question{" +

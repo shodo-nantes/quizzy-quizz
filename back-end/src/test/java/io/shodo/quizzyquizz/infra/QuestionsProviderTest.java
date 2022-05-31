@@ -21,12 +21,6 @@ class QuestionsProviderTest {
         assertThat(questions).containsExactly(Questions.getInstance().getQuestions().get(0), Questions.getInstance().getQuestions().get(1));
     }
 
-    //TODO ce test doit il être dans cette classe de test ou dans une classe de test spécifique à Question ? Les classes métiers doivent elles être testées directement?
-    @Test
-    void should_the_question_returned_have_a_type() {
-        Question question = questionsProvider.getRandomQuestion();
-        assertThat(question.getType()).isEqualTo(QuestionType.MOVIES_THE_ACTOR_PLAYED_IN);
-    }
 
     @Test
     void should_return_question_from_actor_and_type() {

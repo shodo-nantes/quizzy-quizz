@@ -15,8 +15,8 @@ public final class Game {
         this.answers = answers;
     }
 
-    public boolean answer(String answer) {
-        return answers.contains(answer);
+    public boolean answer(PlayerAnswer playerAnswer) {
+        return answers.contains(playerAnswer);
     }
 
     public Question getQuestion() {

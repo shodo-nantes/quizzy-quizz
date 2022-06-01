@@ -1,9 +1,6 @@
 package io.shodo.quizzyquizz.infra.controllers;
 
-import io.shodo.quizzyquizz.domain.AnswersProvider;
-import io.shodo.quizzyquizz.domain.CreateGame;
-import io.shodo.quizzyquizz.domain.Game;
-import io.shodo.quizzyquizz.domain.Games;
+import io.shodo.quizzyquizz.domain.*;
 import io.shodo.quizzyquizz.infra.providers.QuestionsProvider;
 import io.shodo.quizzyquizz.infra.rest.ActorSearch;
 import io.shodo.quizzyquizz.infra.rest.Answer;
@@ -39,7 +36,7 @@ public class GameController {
     @PostMapping("/{id}/answer")
     public ActorSearch.QuestionResult answer(@PathVariable String id, @RequestBody Answer answer) {
         Game game = Games.getInstance().getGame(UUID.fromString(id));
-        return new ActorSearch.QuestionResult(game.answer(answer.answer()));
+        return new ActorSearch.QuestionResult(game.answer(new PlayerAnswer(answer.answer())));
 
     }
 }

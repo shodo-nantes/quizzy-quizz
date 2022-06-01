@@ -16,12 +16,12 @@ class CreateGameTest {
 
     @Test
     void when_giving_a_good_answer_to_a_question_the_game_indicate_its_a_correct_answer() {
-        assertThat(createGame.random().answer("Bombshell")).isTrue();
+        assertThat(createGame.random().answer(new PlayerAnswer("Bombshell"))).isTrue();
     }
 
     @Test
     void when_giving_a_false_answer_to_a_question_the_game_indicate_its_a_correct_answer() {
-        assertThat(createGame.random().answer("Astérix et Obélix : Mission Cléopâtre")).isFalse();
+        assertThat(createGame.random().answer(new PlayerAnswer("Astérix et Obélix : Mission Cléopâtre"))).isFalse();
     }
 
     @Test

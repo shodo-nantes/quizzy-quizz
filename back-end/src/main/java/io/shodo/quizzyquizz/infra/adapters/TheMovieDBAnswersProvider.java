@@ -9,8 +9,11 @@ import io.shodo.quizzyquizz.infra.rest.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
+
+import static java.util.Collections.emptyList;
 
 @Component
 public class TheMovieDBAnswersProvider implements AnswersProvider {
@@ -30,7 +33,9 @@ public class TheMovieDBAnswersProvider implements AnswersProvider {
                 List<Answer> moviesString = movies.stream().map(Movie::toAnswer).toList();
                 return new Answers(moviesString);
             }
-//            case ACTORS_THE_ACTOR_PLAYED_WITH -> null; //TODO implements the method
+            case ACTORS_THE_ACTOR_PLAYED_WITH -> {
+                return new Answers(emptyList()); //TODO implements the method
+            }
             default ->
                     throw new IllegalArgumentException("cannot fetch answers for type:" + randomQuestion.getType() + ". The behavior is not defined in the application.");
         }

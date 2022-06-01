@@ -1,10 +1,7 @@
 package io.shodo.quizzyquizz.infra.controllers;
 
 import com.jayway.jsonpath.JsonPath;
-import io.shodo.quizzyquizz.domain.AnswersProvider;
-import io.shodo.quizzyquizz.domain.CreateGame;
-import io.shodo.quizzyquizz.domain.Game;
-import io.shodo.quizzyquizz.domain.QuestionsProvider;
+import io.shodo.quizzyquizz.domain.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -49,8 +46,8 @@ public class GameControllerTest {
 
     @Test
     void should_answering_a_good_answer_return_true() throws Exception {
-        Game game = new CreateGame(questionProvider, answersProvider).random();
-        String answer = "toto";
+        Game game = new CreateGame(questionProvider, answersProvider).fromActorAndQuestionType("BRAD PITT", Question.QuestionType.MOVIES_THE_ACTOR_PLAYED_IN);
+        String answer = "Troy";
         String gameId = game.getId().toString();
         this.mockMvc.perform(post("/games/" + gameId + "/answer")
                         .contentType(APPLICATION_JSON)

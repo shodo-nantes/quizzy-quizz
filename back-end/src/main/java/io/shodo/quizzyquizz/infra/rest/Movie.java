@@ -1,5 +1,7 @@
 package io.shodo.quizzyquizz.infra.rest;
 
+import io.shodo.quizzyquizz.domain.Answer;
+
 public record Movie(String title, String original_title) {
 
     //TODO remove that
@@ -7,5 +9,9 @@ public record Movie(String title, String original_title) {
     public String toString() {
         return "title:'" + title + '\'' +
                 ", original title:'" + original_title + '\'';
+    }
+
+    public Answer toAnswer(){
+        return new io.shodo.quizzyquizz.domain.Movie(title, original_title);
     }
 }

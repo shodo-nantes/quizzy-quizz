@@ -1,7 +1,7 @@
 package io.shodo.quizzyquizz.domain;
 
 import io.shodo.quizzyquizz.domain.Question.QuestionType;
-import io.shodo.quizzyquizz.infra.TheMovieDBService;
+import io.shodo.quizzyquizz.infra.adapters.TheMovieDBAdapter;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class QuestionTest {
 
     @Autowired
-    private TheMovieDBService theMovieDBServiceMock;
+    private TheMovieDBAdapter theMovieDBAdapter;
 
     @Test
     void when_a_question_is_created_with_type_MOVIES_THE_ACTOR_PLAYED_IN_the_label_is_created_accordingly() {

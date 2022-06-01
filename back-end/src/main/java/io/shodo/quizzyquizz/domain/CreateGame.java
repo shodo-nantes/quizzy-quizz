@@ -5,13 +5,14 @@ import io.shodo.quizzyquizz.domain.Question.QuestionType;
 import java.util.UUID;
 
 public class CreateGame {
-    QuestionsProvider questionsProvider;
-    AnswersProvider answersProvider;
+    private final QuestionsProvider questionsProvider;
+    private final AnswersProvider answersProvider;
+    private final Games games;
 
-    //TODO add game.getinstance() in the constructor
     public CreateGame(QuestionsProvider questionsProvider, AnswersProvider answersProvider) {
         this.questionsProvider = questionsProvider;
         this.answersProvider = answersProvider;
+        this.games = Games.getInstance();
     }
 
     public Game random() {
@@ -27,7 +28,7 @@ public class CreateGame {
     private Game fromQuestion(Question question) {
         Answers answers = answersProvider.getAnswersFor(question);
         Game newGame = new Game(question, answers, UUID.randomUUID());
-        Games.getInstance().save(newGame);
+        games.save(newGame);
         return newGame;
     }
 

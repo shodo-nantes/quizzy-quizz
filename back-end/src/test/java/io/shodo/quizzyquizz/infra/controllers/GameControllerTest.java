@@ -1,4 +1,4 @@
-package io.shodo.quizzyquizz.infra;
+package io.shodo.quizzyquizz.infra.controllers;
 
 import com.jayway.jsonpath.JsonPath;
 import io.shodo.quizzyquizz.domain.AnswersProvider;

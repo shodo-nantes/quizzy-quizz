@@ -1,4 +1,4 @@
-package io.shodo.quizzyquizz.infra;
+package io.shodo.quizzyquizz.infra.providers;
 
 import io.shodo.quizzyquizz.domain.Question;
 import io.shodo.quizzyquizz.domain.Question.QuestionType;

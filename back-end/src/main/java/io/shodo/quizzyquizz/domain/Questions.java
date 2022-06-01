@@ -6,6 +6,7 @@ import static io.shodo.quizzyquizz.domain.Question.QuestionType.ACTORS_THE_ACTOR
 import static io.shodo.quizzyquizz.domain.Question.QuestionType.MOVIES_THE_ACTOR_PLAYED_IN;
 
 //TODO should it be in infra or in domain?
+//TODO delete usages
 public final class Questions {
     private static Questions instance;
 

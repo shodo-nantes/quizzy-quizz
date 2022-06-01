@@ -1,4 +1,6 @@
 package io.shodo.quizzyquizz.domain;
 
-public record Answer(String value) {
+public interface Answer {
+    //TODO create objects Movie and Actor which will inherit this interface
+    boolean isValid();
 }

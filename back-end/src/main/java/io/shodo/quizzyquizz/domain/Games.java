@@ -5,7 +5,8 @@ import java.util.UUID;
 
 public final class Games {
     private static Games instance;
-    HashMap<UUID, Game> createdGames; //TODO mettre l'id en key de la hashmap c'est une bonne idée ou pas ?
+    HashMap<UUID, Game> createdGames;
+    //TODO ça pourrait être une interface car la hashmap est déjà une implémentation
 
     private Games() {
         this.createdGames = new HashMap<>();
@@ -18,7 +19,7 @@ public final class Games {
         return instance;
     }
 
-    void addNewGame(Game game) {
+    void save(Game game) {
         this.createdGames.put(game.getId(), game);
     }
 

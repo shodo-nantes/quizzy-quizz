@@ -1,4 +1,4 @@
-package io.shodo.quizzyquizz.infra;
+package io.shodo.quizzyquizz.infra.rest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

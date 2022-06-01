@@ -8,6 +8,7 @@ public class CreateGame {
     QuestionsProvider questionsProvider;
     AnswersProvider answersProvider;
 
+    //TODO add game.getinstance() in the constructor
     public CreateGame(QuestionsProvider questionsProvider, AnswersProvider answersProvider) {
         this.questionsProvider = questionsProvider;
         this.answersProvider = answersProvider;
@@ -26,7 +27,7 @@ public class CreateGame {
     private Game fromQuestion(Question question) {
         Answers answers = answersProvider.getAnswersFor(question);
         Game newGame = new Game(question, answers, UUID.randomUUID());
-        Games.getInstance().addNewGame(newGame);
+        Games.getInstance().save(newGame);
         return newGame;
     }
 

@@ -8,6 +8,7 @@ public final class Game {
     private final UUID id;
     private final Answers answers;
 
+    //TODO test domain
     public Game(Question question, Answers answers, UUID uuid) {
         this.question = question;
         this.id = uuid;

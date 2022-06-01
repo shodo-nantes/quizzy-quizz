@@ -1,9 +1,12 @@
-package io.shodo.quizzyquizz.infra;
+package io.shodo.quizzyquizz.infra.controllers;
 
 import io.shodo.quizzyquizz.domain.AnswersProvider;
 import io.shodo.quizzyquizz.domain.CreateGame;
 import io.shodo.quizzyquizz.domain.Game;
 import io.shodo.quizzyquizz.domain.Games;
+import io.shodo.quizzyquizz.infra.providers.QuestionsProvider;
+import io.shodo.quizzyquizz.infra.rest.ActorSearch;
+import io.shodo.quizzyquizz.infra.rest.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,9 +37,9 @@ public class GameController {
     }
 
     @PostMapping("/{id}/answer")
-    public QuestionResult answer(@PathVariable String id, @RequestBody Answer answer) {
+    public ActorSearch.QuestionResult answer(@PathVariable String id, @RequestBody Answer answer) {
         Game game = Games.getInstance().getGame(UUID.fromString(id));
-        return new QuestionResult(game.answer(answer.answer()));
+        return new ActorSearch.QuestionResult(game.answer(answer.answer()));
 
     }
 }

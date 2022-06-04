@@ -1,6 +1,6 @@
 package io.shodo.quizzyquizz.infra.rest;
 
-import io.shodo.quizzyquizz.domain.Answer;
+import io.shodo.quizzyquizz.domain.ValidAnswer;
 
 public record Movie(String title, String original_title) {
 
@@ -11,7 +11,7 @@ public record Movie(String title, String original_title) {
                 ", original title:'" + original_title + '\'';
     }
 
-    public Answer toAnswer(){
+    public ValidAnswer toAnswer(){
         return new io.shodo.quizzyquizz.domain.Movie(title, original_title);
     }
 }

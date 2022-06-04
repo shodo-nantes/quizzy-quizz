@@ -2,6 +2,7 @@ package io.shodo.quizzyquizz.infra.controllers;
 
 import com.jayway.jsonpath.JsonPath;
 import io.shodo.quizzyquizz.domain.*;
+import io.shodo.quizzyquizz.domain.usecase.CreateGame;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -19,6 +20,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class GameControllerTest {
 
+    @Autowired
+    private AllGames allGames;
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -46,7 +49,7 @@ public class GameControllerTest {
 
     @Test
     void should_answering_a_good_answer_return_true() throws Exception {
-        Game game = new CreateGame(questionProvider, answersProvider).fromActorAndQuestionType("BRAD PITT", Question.QuestionType.MOVIES_THE_ACTOR_PLAYED_IN);
+        Game game = new CreateGame(questionProvider, answersProvider, allGames).fromActorAndQuestionType("BRAD PITT", Question.QuestionType.MOVIES_THE_ACTOR_PLAYED_IN);
         String answer = "Troy";
         String gameId = game.getId().toString();
         this.mockMvc.perform(post("/games/" + gameId + "/answer")
@@ -63,7 +66,7 @@ public class GameControllerTest {
 
     @Test
     void should_answering_a_wrong_answer_return_false() throws Exception {
-        Game game = new CreateGame(questionProvider, answersProvider).random();
+        Game game = new CreateGame(questionProvider, answersProvider, allGames).random();
         String answer = "Intouchables";
         String gameId = game.getId().toString();
         this.mockMvc.perform(post("/games/" + gameId + "/answer")

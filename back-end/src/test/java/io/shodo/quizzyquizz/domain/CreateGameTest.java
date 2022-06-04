@@ -1,13 +1,15 @@
 package io.shodo.quizzyquizz.domain;
 
 import io.shodo.quizzyquizz.domain.Question.QuestionType;
+import io.shodo.quizzyquizz.domain.usecase.CreateGame;
+import io.shodo.quizzyquizz.infra.InMemoryAllGames;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CreateGameTest {
 
-    private final CreateGame createGame = new CreateGame(new FakeRandomQuestionsProvider(), new FakeAnswersProvider());
+    private final CreateGame createGame = new CreateGame(new FakeRandomQuestionsProvider(), new FakeAnswersProvider(), new InMemoryAllGames());
 
     @Test
     void when_a_new_game_is_created_a_question_should_be_created() {
@@ -16,7 +18,7 @@ class CreateGameTest {
 
     @Test
     void when_giving_a_good_answer_to_a_question_the_game_indicate_its_a_correct_answer() {
-        assertThat(createGame.random().answer(new PlayerAnswer("Bombshell"))).isTrue();
+        assertThat(createGame.random().answer(new PlayerAnswer("Troy"))).isTrue();
     }
 
     @Test

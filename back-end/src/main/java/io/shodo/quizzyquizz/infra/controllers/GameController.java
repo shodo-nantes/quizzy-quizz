@@ -3,7 +3,7 @@ package io.shodo.quizzyquizz.infra.controllers;
 import io.shodo.quizzyquizz.domain.AllGames;
 import io.shodo.quizzyquizz.domain.AnswersProvider;
 import io.shodo.quizzyquizz.domain.Game;
-import io.shodo.quizzyquizz.domain.PlayerAnswer;
+import io.shodo.quizzyquizz.domain.usecase.AnswerQuestion;
 import io.shodo.quizzyquizz.domain.usecase.CreateGame;
 import io.shodo.quizzyquizz.infra.providers.QuestionsProvider;
 import io.shodo.quizzyquizz.infra.rest.ActorSearch;
@@ -41,8 +41,7 @@ public class GameController {
 
     @PostMapping("/{id}/answer")
     public ActorSearch.QuestionResult answer(@PathVariable String id, @RequestBody Answer answer) {
-        Game game = allGames.findBy(UUID.fromString(id)).orElseThrow(IllegalStateException::new);
-        return new ActorSearch.QuestionResult(game.answer(new PlayerAnswer(answer.answer())));
-
+        boolean result = new AnswerQuestion(allGames).answer(id, answer);
+        return new ActorSearch.QuestionResult(result);
     }
 }

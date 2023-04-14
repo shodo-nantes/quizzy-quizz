@@ -1,7 +1,25 @@
 {
-    "name": "quizzy-quizz-frontend",
-    "version": "0.0.1",
+    "name": "frontend",
+    "private": true,
+    "version": "0.0.0",
     "description": "Frontend for quizzy-quizz",
-    "scripts": {},
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    },
+    "devDependencies": {
+        "@types/react": "^18.0.28",
+        "@types/react-dom": "^18.0.11",
+        "@vitejs/plugin-react-swc": "^3.0.0",
+        "typescript": "^4.9.3",
+        "vite": "^4.2.0",
+        "vite-tsconfig-paths": "^4.2.0"
+    },
     "license": "MIT"
 }

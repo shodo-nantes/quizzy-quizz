@@ -2,6 +2,9 @@
     "name": "quizzy-quizz",
     "private": true,
     "description": "Quizz app",
+    "workspaces": [
+        "packages/*"
+    ],
     "scripts": {
         "prepare": "husky install",
         "lint": "eslint . --ext .ts,.tsx,.js,.jsx",

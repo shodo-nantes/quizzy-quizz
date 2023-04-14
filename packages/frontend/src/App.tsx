@@ -1,8 +1,13 @@
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+
 function App() {
     return (
-        <div>
-            <h1>Quizzy Quizz</h1>
-        </div>
+        <Container maxWidth="md">
+            <Typography variant="h1" align="center">
+                Quizzy Quizz
+            </Typography>
+        </Container>
     );
 }
 

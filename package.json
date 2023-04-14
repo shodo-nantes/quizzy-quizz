@@ -3,5 +3,8 @@
     "private": true,
     "description": "Quizz app",
     "scripts": {},
+    "devDependencies": {
+        "prettier": "^2.8.7"
+    },
     "license": "MIT"
 }

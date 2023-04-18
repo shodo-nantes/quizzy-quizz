@@ -1,9 +1,12 @@
+import path from 'path';
+
 import { Router } from 'express';
 
 import { API_BASE_ROUTE, BOARD_BASE_ROUTE } from 'constants/ApiConstants';
 
 const BoardRouter: Router = Router();
 
+const BOARD_ROUTE = path.join(API_BASE_ROUTE, BOARD_BASE_ROUTE);
 const DEFAULT_BOARD_ID = '1';
 
 BoardRouter.get('/', (request, result) => {
@@ -14,7 +17,7 @@ BoardRouter.get('/', (request, result) => {
 BoardRouter.get('/:id', (request, result) => {
     return result.json({
         id: request.params.id,
-        links: [{ rel: 'self', href: `${API_BASE_ROUTE}${BOARD_BASE_ROUTE}/${request.params.id}` }]
+        links: [{ rel: 'self', href: `${BOARD_ROUTE}/${request.params.id}` }]
     });
 });
 

@@ -25,10 +25,22 @@ _Note: you don't have to install dependencies for each package, the root package
 
 ### Development
 
+**Frontend:**
+
 To start the frontend in development mode, run the following command:
 
 ```bash
 npm run dev -w frontend
+```
+
+**Backend:**
+
+Before starting the backend, be sure to read the backend [configuration](packages/backend/README.md#configuration).
+
+To start the backend in development mode, run the following command:
+
+```bash
+npm run dev -w backend
 ```
 
 ## Tools

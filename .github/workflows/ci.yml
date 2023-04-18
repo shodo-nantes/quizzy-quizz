@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
     CI:
-        name: Lint on ${{ matrix.os }}
+        name: Lint and tests on ${{ matrix.os }}
         runs-on: ${{ matrix.os }}
         strategy:
             matrix:
@@ -15,3 +15,5 @@ jobs:
               run: npm ci
             - name: Run linter
               run: npm run lint
+            - name: Run Backend tests
+              run: npm test -w backend

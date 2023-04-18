@@ -80,6 +80,10 @@ module.exports = {
                         group: 'internal'
                     },
                     {
+                        pattern: 'constants/**',
+                        group: 'internal'
+                    },
+                    {
                         pattern: 'middlewares/**',
                         group: 'internal'
                     },
@@ -137,6 +141,7 @@ module.exports = {
                 ignore: ['^[A-Za-z0-9]+\\.[A-Za-z0-9]+$'] // To allow syntax like TripDAO.ts
             }
         ],
+        'unicorn/prefer-node-protocol': 'off', // Not really useful and some errors when using it with path like 'constants/paths.ts'
         'unicorn/prevent-abbreviations': [
             'error',
             {

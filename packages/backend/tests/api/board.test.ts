@@ -11,6 +11,7 @@ describe('Board', () => {
     it('when GET /board, should return an object with property "id"', async () => {
         const result = await request(app).get(BOARD_ROUTE).expect(200);
         expect(result.body).toHaveProperty('id');
+        expect(typeof result.body.id).toBe('string');
     });
 
     it('when GET /board/:id, should return an object with property "id" and "links"', async () => {

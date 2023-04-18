@@ -4,7 +4,7 @@ import { API_BASE_ROUTE, BOARD_BASE_ROUTE } from 'constants/ApiConstants';
 
 const BoardRouter: Router = Router();
 
-const DEFAULT_BOARD_ID = 1;
+const DEFAULT_BOARD_ID = '1';
 
 BoardRouter.get('/', (request, result) => {
     // FIXME: Board ID is not really important for now

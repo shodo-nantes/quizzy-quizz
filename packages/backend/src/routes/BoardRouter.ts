@@ -16,7 +16,7 @@ BoardRouter.get('/', (request: Request, response: Response) => {
 BoardRouter.get('/:boardId', (request, response) => {
     return response.json({
         id: request.params.boardId,
-        links: [{ rel: 'self', href: path.join(BOARD_ROUTE, request.params.boardId) }]
+        links: [{ rel: 'self', method: 'GET', href: path.join(BOARD_ROUTE, request.params.boardId) }]
     });
 });
 

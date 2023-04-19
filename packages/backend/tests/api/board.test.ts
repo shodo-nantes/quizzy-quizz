@@ -18,7 +18,7 @@ describe('Board', () => {
         const result = await request(app).get(`${BOARD_ROUTE}/1`).expect(200);
         expect(result.body).toEqual({
             id: '1',
-            links: [{ rel: 'self', href: `${BOARD_ROUTE}/1` }]
+            links: [{ rel: 'self', method: 'GET', href: `${BOARD_ROUTE}/1` }]
         });
     });
 });

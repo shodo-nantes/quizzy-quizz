@@ -1,13 +1,21 @@
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
+import { Routes, Route } from 'react-router-dom';
+
+import Layout from 'components/Layout';
+import Home from 'pages/Home';
+import NotFound from 'pages/NotFound';
 
 function App() {
     return (
-        <Container maxWidth="md">
-            <Typography variant="h1" align="center">
-                Quizzy Quizz
-            </Typography>
-        </Container>
+        <Routes>
+            <Route element={<Layout />}>
+                <Route path="/" element={<Home />} />
+
+                {/* Using path="*"" means "match anything", so this route
+                acts like a catch-all for URLs that we don't have explicit
+                routes for. */}
+                <Route path="*" element={<NotFound />} />
+            </Route>
+        </Routes>
     );
 }
 

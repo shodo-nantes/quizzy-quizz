@@ -44,6 +44,7 @@ module.exports = {
         'import/no-named-as-default-member': 'off', // takes too long
         'import/no-namespace': 'off', // enable namespaces
         // ERRORS
+        '@typescript-eslint/no-unused-vars': 'error',
         'import/extensions': [
             'error',
             'never',
@@ -96,6 +97,10 @@ module.exports = {
                         group: 'internal'
                     },
                     {
+                        pattern: 'pages/**',
+                        group: 'internal'
+                    },
+                    {
                         pattern: 'routes/**',
                         group: 'internal'
                     },
@@ -145,6 +150,7 @@ module.exports = {
                 ignore: ['^[A-Za-z0-9]+\\.[A-Za-z0-9]+$'] // To allow syntax like TripDAO.ts
             }
         ],
+        'unicorn/no-null': 'off', // To allow null values, need for some libs
         'unicorn/prefer-node-protocol': 'off', // Not really useful and some errors when using it with path like 'constants/paths.ts'
         'unicorn/prevent-abbreviations': [
             'error',

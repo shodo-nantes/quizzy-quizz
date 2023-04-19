@@ -84,6 +84,10 @@ module.exports = {
                         group: 'internal'
                     },
                     {
+                        pattern: 'data/**',
+                        group: 'internal'
+                    },
+                    {
                         pattern: 'middlewares/**',
                         group: 'internal'
                     },

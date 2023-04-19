@@ -14,10 +14,10 @@ BoardRouter.get('/', (request: Request, response: Response) => {
     return response.json({ id: DEFAULT_BOARD_ID });
 });
 
-BoardRouter.get('/:id', (request, response) => {
+BoardRouter.get('/:boardId', (request, response) => {
     return response.json({
-        id: request.params.id,
-        links: [{ rel: 'self', href: `${BOARD_ROUTE}/${request.params.id}` }]
+        id: request.params.boardId,
+        links: [{ rel: 'self', href: `${BOARD_ROUTE}/${request.params.boardId}` }]
     });
 });
 

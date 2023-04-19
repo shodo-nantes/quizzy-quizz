@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 
 import { API_BASE_ROUTE, BOARD_BASE_ROUTE } from 'constants/ApiConstants';
 
@@ -9,13 +9,13 @@ const BoardRouter: Router = Router();
 const BOARD_ROUTE = path.join(API_BASE_ROUTE, BOARD_BASE_ROUTE);
 const DEFAULT_BOARD_ID = '1';
 
-BoardRouter.get('/', (request, result) => {
+BoardRouter.get('/', (request: Request, response: Response) => {
     // FIXME: Board ID is not really important for now
-    return result.json({ id: DEFAULT_BOARD_ID });
+    return response.json({ id: DEFAULT_BOARD_ID });
 });
 
-BoardRouter.get('/:id', (request, result) => {
-    return result.json({
+BoardRouter.get('/:id', (request, response) => {
+    return response.json({
         id: request.params.id,
         links: [{ rel: 'self', href: `${BOARD_ROUTE}/${request.params.id}` }]
     });

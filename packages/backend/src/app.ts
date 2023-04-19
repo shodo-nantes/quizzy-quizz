@@ -5,8 +5,8 @@ import ApiRouter from 'routes/ApiRouter';
 
 const app: Express = express();
 
-app.get('/', (request: Request, result: Response) => {
-    result.send();
+app.get('/', (request: Request, response: Response) => {
+    response.send();
 });
 
 app.use(API_BASE_ROUTE, ApiRouter);

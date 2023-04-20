@@ -9,7 +9,7 @@ export default function Layout() {
         <>
             <NavBar pages={[{ title: texts['navbar.page.home'], href: '/' }]} />
 
-            <Container maxWidth="md" component="main">
+            <Container maxWidth="md" component="main" sx={{ mt: 2 }}>
                 <Outlet />
             </Container>
         </>

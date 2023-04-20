@@ -1,21 +1,18 @@
-import path from 'path';
-
 import app from 'app';
 import request from 'supertest';
 
-import { API_BASE_ROUTE, BOARD_BASE_ROUTE } from 'constants/ApiConstants';
+import { BOARD_ROUTE } from 'constants/ApiConstants';
 import questions from 'data/questions.json';
 
-const BOARD_ROUTE = path.join(API_BASE_ROUTE, BOARD_BASE_ROUTE);
-
 describe('Board', () => {
-    it('when GET /board, should return an object with property "id"', async () => {
-        const result = await request(app).get(BOARD_ROUTE).expect(200);
-        expect(result.body).toHaveProperty('id');
-        expect(typeof result.body.id).toBe('string');
+    it('when GET /board, should return an array of object with property "id" that is a string', async () => {
+        const { body } = await request(app).get(BOARD_ROUTE).expect(200);
+        expect(Array.isArray(body)).toBe(true);
+        expect(body[0]).toHaveProperty('id');
+        expect(typeof body[0].id).toBe('string');
     });
 
-    it('when GET /board/:id, should return an object with property "id" and "links"', async () => {
+    it('when GET /board/:boardId, should return an object with property "id", "question" and "links"', async () => {
         const result = await request(app).get(`${BOARD_ROUTE}/1`).expect(200);
         expect(result.body).toEqual({
             id: '1',

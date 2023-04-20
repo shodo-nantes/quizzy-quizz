@@ -5,6 +5,7 @@
     "description": "Frontend for quizzy-quizz",
     "type": "module",
     "scripts": {
+        "test": "echo \"No tests\" && exit 0",
         "dev": "vite",
         "build": "tsc && vite build",
         "preview": "vite preview"

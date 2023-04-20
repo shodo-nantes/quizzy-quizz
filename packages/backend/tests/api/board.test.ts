@@ -10,6 +10,7 @@ describe('Board', () => {
         expect(result.body).toEqual([
             {
                 id: '1',
+                name: 'Board 1',
                 _links: {
                     self: { method: 'GET', href: BOARD_ROUTE },
                     board: { method: 'GET', href: `${BOARD_ROUTE}/1` }
@@ -22,6 +23,7 @@ describe('Board', () => {
         const result = await request(app).get(`${BOARD_ROUTE}/1`).expect(200);
         expect(result.body).toEqual({
             id: '1',
+            name: 'Board 1',
             question: questions[0].question,
             _links: {
                 self: { method: 'GET', href: `${BOARD_ROUTE}/1` }

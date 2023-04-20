@@ -12,6 +12,9 @@ const LinkBehavior = React.forwardRef<HTMLAnchorElement, Omit<RouterLinkProps, '
 );
 
 const theme = createTheme({
+    palette: {
+        mode: 'dark'
+    },
     components: {
         MuiLink: {
             defaultProps: {

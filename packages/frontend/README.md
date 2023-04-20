@@ -19,3 +19,13 @@ Run the following command:
 ```bash
 npm run dev
 ```
+
+## Configuration
+
+You can configure the frontend by creating a `.env` file in the root of the backend package.
+
+### Environment variables
+
+| Name    | Description            | Default value         |
+| ------- | ---------------------- | --------------------- |
+| API_URL | URL of the backend API | http://localhost:3000 |

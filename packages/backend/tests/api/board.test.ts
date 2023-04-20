@@ -10,10 +10,10 @@ describe('Board', () => {
         expect(result.body).toEqual([
             {
                 id: '1',
-                links: [
-                    { rel: 'self', method: 'GET', href: BOARD_ROUTE },
-                    { rel: 'board', method: 'GET', href: `${BOARD_ROUTE}/1` }
-                ]
+                _links: {
+                    self: { method: 'GET', href: BOARD_ROUTE },
+                    board: { method: 'GET', href: `${BOARD_ROUTE}/1` }
+                }
             }
         ]);
     });
@@ -23,7 +23,9 @@ describe('Board', () => {
         expect(result.body).toEqual({
             id: '1',
             question: questions[0].question,
-            links: [{ rel: 'self', method: 'GET', href: `${BOARD_ROUTE}/1` }]
+            _links: {
+                self: { method: 'GET', href: `${BOARD_ROUTE}/1` }
+            }
         });
     });
 });

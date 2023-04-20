@@ -15,10 +15,10 @@ BoardRouter.get('/', (request: Request, response: Response) => {
     return response.json([
         {
             id: DEFAULT_BOARD_ID,
-            links: [
-                { rel: 'self', method: 'GET', href: BOARD_ROUTE },
-                { rel: 'board', method: 'GET', href: path.join(BOARD_ROUTE, DEFAULT_BOARD_ID) }
-            ]
+            _links: {
+                self: { method: 'GET', href: BOARD_ROUTE },
+                board: { method: 'GET', href: path.join(BOARD_ROUTE, DEFAULT_BOARD_ID) }
+            }
         }
     ]);
 });
@@ -27,7 +27,9 @@ BoardRouter.get('/:boardId', (request, response) => {
     return response.json({
         id: request.params.boardId,
         question: DEFAULT_QUESTION.question,
-        links: [{ rel: 'self', method: 'GET', href: path.join(BOARD_ROUTE, request.params.boardId) }]
+        _links: {
+            self: { method: 'GET', href: path.join(BOARD_ROUTE, request.params.boardId) }
+        }
     });
 });
 

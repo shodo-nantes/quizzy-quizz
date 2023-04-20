@@ -12,8 +12,15 @@ const DEFAULT_BOARD_ID = '1';
 const DEFAULT_QUESTION = questions[0];
 
 BoardRouter.get('/', (request: Request, response: Response) => {
-    // FIXME: Board ID is not really important for now
-    return response.json([{ id: DEFAULT_BOARD_ID }]);
+    return response.json([
+        {
+            id: DEFAULT_BOARD_ID,
+            links: [
+                { rel: 'self', method: 'GET', href: BOARD_ROUTE },
+                { rel: 'board', method: 'GET', href: path.join(BOARD_ROUTE, DEFAULT_BOARD_ID) }
+            ]
+        }
+    ]);
 });
 
 BoardRouter.get('/:boardId', (request, response) => {

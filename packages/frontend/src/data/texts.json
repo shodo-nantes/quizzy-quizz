@@ -1,5 +1,6 @@
 {
     "navbar.title": "QUIZZY QUIZZ",
     "navbar.page.home": "Accueil",
-    "navbar.menuButton.ariaLabel": "Ouvrir le menu de navigation"
+    "navbar.menuButton.ariaLabel": "Ouvrir le menu de navigation",
+    "button.play.ariaLabel": "Jouer"
 }

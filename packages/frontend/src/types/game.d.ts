@@ -1,6 +1,6 @@
 import HypermediaLink from './hypermediaLink';
 
-export default interface Board {
+export default interface Game {
     id: string;
     name: string;
     _links: Record<string, HypermediaLink>;

@@ -8,27 +8,27 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import { useEffect, useState } from 'react';
 
-import { getBoards } from 'api/BoardApi';
+import { getGames } from 'api/GamesApi';
 import texts from 'data/texts.json';
-import Board from 'types/board';
+import Game from 'types/game';
 
 export default function Home() {
-    const [boards, setBoards] = useState<Board[]>([]);
+    const [games, setGames] = useState<Game[]>([]);
 
-    const fetchBoards = async () => {
-        const boardsFetched = await getBoards();
-        setBoards(boardsFetched);
+    const fetchGames = async () => {
+        const gamesFetched = await getGames();
+        setGames(gamesFetched);
     };
 
     useEffect(() => {
-        fetchBoards();
+        fetchGames();
     }, []);
     return (
         <>
             <List sx={{ maxWidth: 360, mx: 'auto' }}>
-                {boards.map((board) => (
+                {games.map((game) => (
                     <ListItem
-                        key={board.id}
+                        key={game.id}
                         secondaryAction={
                             <IconButton edge="end" aria-label={texts['button.play.ariaLabel']} href="#">
                                 <PlayCircleIcon />
@@ -40,7 +40,7 @@ export default function Home() {
                                 <MovieIcon />
                             </Avatar>
                         </ListItemAvatar>
-                        <ListItemText primary={board.name} />
+                        <ListItemText primary={game.name} />
                     </ListItem>
                 ))}
             </List>

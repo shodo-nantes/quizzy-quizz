@@ -12,6 +12,8 @@ import { getGames } from 'api/GamesApi';
 import texts from 'data/texts.json';
 import Game from 'types/game';
 
+const GAME_PATH = '/games';
+
 export default function Home() {
     const [games, setGames] = useState<Game[]>([]);
 
@@ -30,7 +32,11 @@ export default function Home() {
                     <ListItem
                         key={game.id}
                         secondaryAction={
-                            <IconButton edge="end" aria-label={texts['button.play.ariaLabel']} href="#">
+                            <IconButton
+                                edge="end"
+                                aria-label={texts['button.play.ariaLabel']}
+                                href={`${GAME_PATH}/${game.id}`}
+                            >
                                 <PlayCircleIcon />
                             </IconButton>
                         }

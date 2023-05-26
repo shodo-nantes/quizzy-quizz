@@ -30,4 +30,9 @@ describe('Games', () => {
             }
         });
     });
+
+    it('when GET /games/:id, should return 404 if id is not found', async () => {
+        const result = await request(app).get(`${GAMES_ROUTE}/2`).expect(404);
+        expect(result.body).toEqual({ message: 'Not found' });
+    });
 });

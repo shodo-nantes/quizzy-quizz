@@ -26,14 +26,16 @@ GamesRouter.get('/', (request: Request, response: Response) => {
 });
 
 GamesRouter.get('/:id', (request, response) => {
-    return response.json({
-        id: request.params.id,
-        name: DEFAULT_GAMES_NAME,
-        question: DEFAULT_QUESTION.question,
-        _links: {
-            self: { method: 'GET', href: path.join(GAMES_ROUTE, request.params.id) }
-        }
-    });
+    return request.params.id === DEFAULT_GAMES_ID
+        ? response.json({
+              id: request.params.id,
+              name: DEFAULT_GAMES_NAME,
+              question: DEFAULT_QUESTION.question,
+              _links: {
+                  self: { method: 'GET', href: path.join(GAMES_ROUTE, request.params.id) }
+              }
+          })
+        : response.status(404).json({ message: 'Not found' });
 });
 
 export default GamesRouter;

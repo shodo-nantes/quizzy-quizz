@@ -5,6 +5,8 @@ import ApiRouter from 'routes/ApiRouter';
 
 const app: Express = express();
 
+app.use(express.json());
+
 app.get('/', (request: Request, response: Response) => {
     response.send();
 });

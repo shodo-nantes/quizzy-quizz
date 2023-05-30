@@ -38,4 +38,21 @@ GamesRouter.get('/:id', (request, response) => {
         : response.status(404).json({ message: 'Not found' });
 });
 
+GamesRouter.post('/:id/proposal', (request, response) => {
+    if (request.params.id === DEFAULT_GAMES_ID) {
+        const { proposal }: { proposal: string } = request.body;
+
+        if (!proposal) {
+            return response.status(400).json({ message: 'Bad request' });
+        }
+
+        const proposalFormatted = proposal.trim().toLowerCase();
+        return DEFAULT_QUESTION.answers.includes(proposalFormatted)
+            ? response.json({ goodAnswer: true })
+            : response.json({ goodAnswer: false });
+    } else {
+        return response.status(404).json({ message: 'Not found' });
+    }
+});
+
 export default GamesRouter;

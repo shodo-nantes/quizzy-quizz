@@ -1,33 +1,24 @@
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import FormControl from '@mui/material/FormControl';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useCallback, useEffect, useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 
 import { getGame } from 'api/GamesApi';
+import texts from 'data/texts.json';
 import Game from 'types/game';
 
-function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    console.info('submit', event);
-    // const { name, value } = event.target;
-    // console.info('submit', name, value);
+function onSubmit(data: SubmitHandler<{ proposal: string }>) {
+    console.info('submit', data);
 }
-
-interface FormState {
-    proposal: string;
-}
-
-const initialFormState: FormState = {
-    proposal: ''
-};
 
 export default function GamePage() {
     const { id } = useParams();
+    const { register, handleSubmit } = useForm();
     const [game, setGame] = useState<Game>();
-    const [formState, setFormState] = useState<FormState>(initialFormState);
 
     const fetchGame = useCallback(async () => {
         if (id !== undefined) {
@@ -40,31 +31,22 @@ export default function GamePage() {
         fetchGame();
     }, [fetchGame]);
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target;
-        console.info('change', name, value);
-        setFormState((previousState) => ({ ...previousState, [name]: value }));
-    };
-
     return (
         <>
             {game && (
                 <Stack alignItems="center">
                     <Typography variant="h2">{game.name}</Typography>
                     <Typography variant="body1">{game.question}</Typography>
-                    <FormControl component="form" onSubmit={handleSubmit}>
-                        <TextField
-                            id="proposal"
-                            name="proposal"
-                            label="Proposition"
-                            value={formState.proposal}
-                            onChange={handleInputChange}
-                            variant="outlined"
-                        />
+                    <Box
+                        component="form"
+                        onSubmit={handleSubmit(onSubmit)}
+                        sx={{ mt: 2, display: 'flex', flexDirection: 'column', gap: '10px' }}
+                    >
+                        <TextField label={texts['input.proposal.label']} variant="outlined" {...register('proposal')} />
                         <Button variant="contained" type="submit">
-                            Valider
+                            {texts['button.proposal.submit']}
                         </Button>
-                    </FormControl>
+                    </Box>
                 </Stack>
             )}
         </>

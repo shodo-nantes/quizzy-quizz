@@ -13,3 +13,8 @@ export async function getGame(id: string): Promise<Game> {
     const { data } = await axios.get(`${GAMES_API_URL}/${id}`);
     return data;
 }
+
+export async function postProposal(id: string, proposal: string): Promise<boolean> {
+    const { data } = await axios.post(`${GAMES_API_URL}/${id}/proposal`, { proposal });
+    return data.goodAnswer;
+}

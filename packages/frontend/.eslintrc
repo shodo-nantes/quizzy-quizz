@@ -1,0 +1,5 @@
+{
+    "rules": {
+        "unicorn/consistent-function-scoping": "off"
+    }
+}

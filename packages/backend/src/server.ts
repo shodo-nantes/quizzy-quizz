@@ -1,4 +1,4 @@
-import { PORT } from 'config/environement';
+import { PORT } from 'config/environment';
 
 import app from './app';
 

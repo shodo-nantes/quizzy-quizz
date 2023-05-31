@@ -35,4 +35,20 @@ describe('Games', () => {
         const result = await request(app).get(`${GAMES_ROUTE}/2`).expect(404);
         expect(result.body).toEqual({ message: 'Not found' });
     });
+
+    it('when POST /games/:id/proposal, should return true if proposal is good', async () => {
+        const result = await request(app)
+            .post(`${GAMES_ROUTE}/1/proposal`)
+            .send({ proposal: questions[0].answers[0] })
+            .expect(200);
+        expect(result.body).toEqual({ goodAnswer: true });
+    });
+
+    it('when POST /games/:id/proposal, should return false if proposal is not good', async () => {
+        const result = await request(app)
+            .post(`${GAMES_ROUTE}/1/proposal`)
+            .send({ proposal: 'bad proposal' })
+            .expect(200);
+        expect(result.body).toEqual({ goodAnswer: false });
+    });
 });

@@ -1,7 +1,7 @@
-import { JWT_SECRET } from 'config';
 import { Router, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
+import { JWT_SECRET } from 'config/environement';
 import { SIGNUP_BASE_ROUTE } from 'constants/ApiConstants';
 
 const AuthRouter: Router = Router();

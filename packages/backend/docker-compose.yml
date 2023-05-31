@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+    db:
+        container_name: quizzy-db
+        image: postgres
+        environment:
+            POSTGRES_DB: ${DB_DATABASE}
+            POSTGRES_USER: ${DB_USER}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+        ports:
+            - '5432:5432'
+        restart: always
+    adminer:
+        container_name: quizzy-adminer
+        image: adminer
+        restart: always
+        ports:
+        - 8181:8080

@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 
 import { JWT_SECRET } from 'config/environment';
 import { SIGNUP_BASE_ROUTE } from 'constants/ApiConstants';
+import { BadRequestException } from 'utils/exceptions';
 
 const AuthRouter: Router = Router();
 
@@ -12,7 +13,7 @@ AuthRouter.post(SIGNUP_BASE_ROUTE, (request: Request, response: Response) => {
     const { username, password } = request.body;
 
     if (!username || !password) {
-        return response.status(400).json({ message: 'Bad request' });
+        throw new BadRequestException('Username and password are required');
     }
 
     const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: TOKEN_EXPIRATION });

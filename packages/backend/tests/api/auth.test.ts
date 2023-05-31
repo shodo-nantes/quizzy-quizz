@@ -7,12 +7,12 @@ describe('Auth', () => {
     describe(`when POST ${SIGNUP_ROUTE}`, () => {
         it('should return 400 if username is not provided', async () => {
             const result = await request(app).post(SIGNUP_ROUTE).send({ password: 'password' }).expect(400);
-            expect(result.body).toEqual({ message: 'Bad request' });
+            expect(result.body).toEqual({ message: 'Username and password are required', status: 400 });
         });
 
         it('should return 400 if password is not provided', async () => {
             const result = await request(app).post(SIGNUP_ROUTE).send({ username: 'username' }).expect(400);
-            expect(result.body).toEqual({ message: 'Bad request' });
+            expect(result.body).toEqual({ message: 'Username and password are required', status: 400 });
         });
 
         it('should return an object with property "token"', async () => {

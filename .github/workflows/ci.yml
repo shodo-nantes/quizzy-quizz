@@ -9,6 +9,8 @@ jobs:
         strategy:
             matrix:
                 os: [ubuntu-latest]
+        env:
+            JWT_SECRET: secret
         steps:
             - uses: actions/checkout@v3
             - name: Install dependencies

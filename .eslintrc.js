@@ -90,6 +90,10 @@ module.exports = {
                         group: 'internal'
                     },
                     {
+                        pattern: 'db/**',
+                        group: 'internal'
+                    },
+                    {
                         pattern: 'middlewares/**',
                         group: 'internal'
                     },
@@ -99,6 +103,10 @@ module.exports = {
                     },
                     {
                         pattern: 'pages/**',
+                        group: 'internal'
+                    },
+                    {
+                        pattern: 'repositories/**',
                         group: 'internal'
                     },
                     {

@@ -1,5 +1,4 @@
 import prisma from 'db/prisma';
-
 import { User, UserWithoutId } from 'types/user';
 
 export async function getUsers(): Promise<User[]> {

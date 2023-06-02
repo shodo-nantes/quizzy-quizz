@@ -34,6 +34,7 @@ module.exports = {
     ],
     rules: {
         // OFF
+        '@typescript-eslint/no-empty-interface': 'off', // If use of Omit<T, K>, it will trigger this rule
         'no-unused-vars': 'off', //  handled by @typescript-eslint/no-unused-vars
         'i18n-text/no-en': 'off',
         'filenames/match-regex': 'off', // handled by unicorn/filename-case

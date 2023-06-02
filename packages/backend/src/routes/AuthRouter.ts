@@ -10,7 +10,7 @@ const AuthRouter: Router = Router();
 
 const TOKEN_EXPIRATION = '1h';
 
-AuthRouter.post(SIGNUP_BASE_ROUTE, (request: Request, response: Response) => {
+AuthRouter.post(SIGNUP_BASE_ROUTE, async (request: Request, response: Response) => {
     const { name, password }: UserWithoutId = request.body;
 
     if (!name || !password) {

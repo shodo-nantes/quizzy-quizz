@@ -1,4 +1,5 @@
 import express, { Express, Request, Response } from 'express';
+import 'express-async-errors';
 
 import { API_BASE_ROUTE } from 'constants/ApiConstants';
 import { ExceptionsHandler } from 'middlewares/ExceptionsHandler';

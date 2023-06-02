@@ -13,3 +13,9 @@ export class BadRequestException extends Exception {
         super(message, 400);
     }
 }
+
+export class ConflictException extends Exception {
+    constructor(message = 'Conflict') {
+        super(message, 409);
+    }
+}

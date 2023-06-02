@@ -27,11 +27,11 @@ describe('UserRepository', () => {
         });
     });
 
-    describe('getUserById', () => {
+    describe('getUserByName', () => {
         it('should call prisma.user.findUnique', async () => {
-            await UserRepository.getUserById(1);
+            await UserRepository.getUserByName('Jane Doe');
 
-            expect(prismaMock.user.findUnique).toHaveBeenCalledWith({ where: { id: 1 } });
+            expect(prismaMock.user.findUnique).toHaveBeenCalledWith({ where: { name: 'Jane Doe' } });
         });
     });
 

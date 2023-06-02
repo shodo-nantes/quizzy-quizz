@@ -6,8 +6,8 @@ export async function getUsers(): Promise<User[]> {
     return prisma.user.findMany();
 }
 
-export async function getUserById(id: number): Promise<User | null> {
-    return prisma.user.findUnique({ where: { id } });
+export async function getUserByName(name: string): Promise<User | null> {
+    return prisma.user.findUnique({ where: { name } });
 }
 
 export async function createUser(user: UserWithoutId): Promise<User> {

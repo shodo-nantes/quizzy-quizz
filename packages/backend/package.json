@@ -4,8 +4,10 @@
     "version": "0.0.1",
     "description": "Backend for quizzy quizz app",
     "scripts": {
-        "prestart": "npm run build",
+        "db:migrate": "prisma migrate dev",
+        "prestart": "npm run build && npm run db:migrate",
         "start": "node ./dist/server.js",
+        "predev": "npm run db:migrate",
         "dev": "nodemon",
         "build": "rimraf dist && node build",
         "test": "jest"

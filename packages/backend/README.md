@@ -37,3 +37,4 @@ You have to define the following environment variables in the `.env` file:
 | DB_USER      | User of the database (used by docker-compose.yml)                                                                                      |               |
 | DB_PASSWORD  | Password of the database (used by docker-compose.yml)                                                                                  |               |
 | DATABASE_URL | URL of the database (used by prisma, [see documentation](https://www.prisma.io/docs/reference/database-reference/connection-urls#env)) |               |
+| SALT_ROUNDS  | Number of salt rounds for password hashing                                                                                             |               |

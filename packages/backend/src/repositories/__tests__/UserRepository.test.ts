@@ -19,6 +19,10 @@ describe('UserRepository', () => {
         jest.resetAllMocks();
     });
 
+    afterAll(() => {
+        jest.restoreAllMocks();
+    });
+
     describe('getUsers', () => {
         it('should call prisma.user.findMany', async () => {
             await UserRepository.getUsers();

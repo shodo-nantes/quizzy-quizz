@@ -56,6 +56,12 @@ describe('Auth', () => {
             });
         });
 
+        it('should send a request to create user', async () => {
+            await request.post(SIGNUP_ROUTE).send({ name: 'name', password: 'password' }).expect(200);
+
+            expect(UserRepositoryMock.createUser).toHaveBeenCalledWith({ name: 'name', password: expect.any(String) });
+        });
+
         it('should return 409 if user already exists', async () => {
             UserRepositoryMock.getUserByName.mockResolvedValue(user);
 

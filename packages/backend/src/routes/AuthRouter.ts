@@ -1,7 +1,8 @@
+import bcrypt from 'bcrypt';
 import { Router, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
-import { JWT_SECRET } from 'config/environment';
+import { JWT_SECRET, SALT_ROUNDS } from 'config/environment';
 import { SIGNUP_BASE_ROUTE } from 'constants/ApiConstants';
 import { createUser, getUserByName } from 'repositories/UserRepository';
 import { UserWithoutId } from 'types/user';
@@ -23,8 +24,8 @@ AuthRouter.post(SIGNUP_BASE_ROUTE, async (request: Request, response: Response) 
         throw new ConflictException('An user with this name already exists');
     }
 
-    // TODO: hash password
-    const userCreated = await createUser({ name, password });
+    const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
+    const userCreated = await createUser({ name, password: hashedPassword });
     if (userCreated == null) {
         throw new BadRequestException('Error when creating user');
     }

@@ -3,8 +3,9 @@ import jwt from 'jsonwebtoken';
 
 import { JWT_SECRET } from 'config/environment';
 import { SIGNUP_BASE_ROUTE } from 'constants/ApiConstants';
+import { createUser, getUserByName } from 'repositories/UserRepository';
 import { UserWithoutId } from 'types/user';
-import { BadRequestException } from 'utils/exceptions';
+import { BadRequestException, ConflictException } from 'utils/exceptions';
 
 const AuthRouter: Router = Router();
 
@@ -17,7 +18,18 @@ AuthRouter.post(SIGNUP_BASE_ROUTE, async (request: Request, response: Response) 
         throw new BadRequestException('Fields name and password are required');
     }
 
-    const token = jwt.sign({ name }, JWT_SECRET, { expiresIn: TOKEN_EXPIRATION });
+    const user = await getUserByName(name);
+    if (user !== null) {
+        throw new ConflictException('An user with this name already exists');
+    }
+
+    // TODO: hash password
+    const userCreated = await createUser({ name, password });
+    if (userCreated == null) {
+        throw new BadRequestException('Error when creating user');
+    }
+
+    const token = jwt.sign({ id: userCreated.id, name: userCreated.name }, JWT_SECRET, { expiresIn: TOKEN_EXPIRATION });
     return response.json({ token });
 });
 
